@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Export Table to Excel in Javascript</title>
+  </head>
+  <body>
+    <table id="excel">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Haridas</td>
+          <td>24</td>
+        </tr>
+        <tr>
+          <td>Vijay kumar</td>
+          <td>24</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <button class="default">Default export</button>
+      <button class="temp-1">Template 1</button>
+      <button class="temp-2">Template 2</button>
+    </div>
+  </body>
+  <script src="src/index.js"></script>
+  <script>
+    exportExcel("myTable", "MyExcelFile");
+    document.addEventListener("DOMContentLoaded", function () {
+      var defaultExportBtn = document.querySelector(".default");
+      var template1Btn = document.querySelector(".temp-1");
+      var template2Btn = document.querySelector(".temp-2");
+
+      defaultExportBtn.addEventListener("click", function () {
+        exportExcel("excel", "MyExcelFile");
+      });
+
+      template1Btn.addEventListener("click", function () {
+        let template1 = { headerColor: "#FF5733", rowSize: "small" };
+        exportExcel("excel", "Template1",template1);
+      });
+
+      template2Btn.addEventListener("click", function () {
+        let template2 = { headerColor: "#FF5733", rowSize: "normal" };
+        exportExcel("excel", "Template2",template2);
+      });
+    });
+  </script>
+</html>
